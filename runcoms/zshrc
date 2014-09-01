@@ -64,14 +64,43 @@ alias gcam="git commit --all --message"
 alias gst="git status"
 alias gba="git branch -a"
 
-# MySQL
-# alias mysql="mysql"
+# My Functions
 
-# MERGE INTO FINALTABLE
-# USING MERGETABLE
-# ON (FINALTABLE.ID=MERGETABLE.ID)
-# WHEN MATCHED THEN
-#   UPDATE SET FIRST_NAME=MERGETABLE.FIRST_NAME, LAST_NAME=MERGETABLE.LAST_NAME
-# WHEN NOT MATCHED THEN
-#   INSERT (ID, FIRST_NAME, LAST_NAME)
-#   VALUES (MERGETABLE.ID, MERGETABLE.FIRST_NAME, MERGETABLE.LAST_NAME);
+# To do list functions
+# Set location of to do file with file variable
+file=$HOME/Documents/ToDo.txt
+# add to do
+function atd {
+	# check for to do argument
+	if [[ $1 == "" ]]
+	then
+		echo "atd requires a string argument \n e.g. atd \"Do Homework\""
+		return
+	fi
+	#check if file exists if not create file
+	if ! [ -f $file ]
+	then
+		touch $file
+	fi
+	# write line to file with proper number
+	echo "$1" >> $file
+}
+
+# list to do
+alias ltd="cat -n $file"
+
+# remove to do
+function rmtd {
+	numLines=$(wc -l < $file)
+	if [[ $1 -lt 0 || $1 -gt $numLines || ! $1 =~ '^[0-9]+$' ]] then
+		echo "Invalid argument, rmtd requires a number argument between zero and the length of the ToDo list"
+		return
+	fi
+	sed -i '' ${1}d $file
+}
+
+# modify to do
+function mtd {
+	sed -i '' ${1}d $file
+	echo "$2" >> $file
+}
