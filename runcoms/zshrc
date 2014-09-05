@@ -16,55 +16,14 @@ fi
 # decrease timeout to .1 secs when changing to vi command-mode
 export KEYTIMEOUT=1
 
-# Aliases
-# Heroku aliases
-alias devdb="heroku pg:psql --app dev-apihub-relationshipone"
-alias qadb="heroku pg:psql --app qa-apihub-relationshipone"
-alias proddb="heroku pg:psql --app apihub-relationshipone"
+# Source Aliases
+if [[ -s "${ZDOTDIR:-$HOME}/alias.zsh" ]]; then
+	source "${ZDOTDIR:-$HOME}/alias.zsh"
+fi
 
-alias redshiftdb="psql -h test-quosity-west-01.c9lob1qejqcs.us-west-2.redshift.amazonaws.com -p 5439 -U r1development development"
-
-alias reloadZSHRC='. ~/.zshrc'
-alias reloadZProfile='. ~/.zprofile'
-alias reloadZPreztorc='. ~/.zpreztorc'
-
-# Movement Aliases
-alias gotoHome="cd $HOME"
-alias gotoDocuments="gotoHome; cd Documents"
-
-	# work aliases
-	alias gotoWork="gotoDocuments; cd Work"
-	alias gotoRunner="gotoWork; cd r1-cloud-runner"
-	alias gotoAppCloud="gotoWork; cd r1-appcloud-ui"
-	alias gotoApihub="gotoWork; cd r1-cloud-apihub"
-	alias gotoCC="gotoWork; cd r1-cloud-connectors"
-	alias gotoR1Utils="gotoCC; cd R1Utils"
-	alias gotoCloudConnector="gotoCC; cd CloudConnector"
-
-	# School aliases
-	alias gotoEducation="gotoDocuments; cd Education"
-	alias gotoCurrentClasses="gotoEducation; cd CurrentClasses"
-	alias gotoMechanics="gotoCurrentClasses; cd Mechanics"
-	alias gotoNumericalMethods="gotoCurrentClasses; cd Numerical_Methods"
-	alias gotoRealAnalysis="gotoCurrentClasses; cd Real_Analysis"
-	alias gotoOperatingSystems="gotoCurrentClasses; cd Operating_Systems"
-
-# Maven Aliases
-alias mvni="mvn install"
-alias mvnist="mvn install -D skipTests=true"
-alias mvnd="mvn deploy"
-alias mvndst="mvn deploy -D skipTests=true"
-alias mvncl="mvn clean"
-alias mvnco="mvn compile"
-alias mvncc="mvn clean compile"
-alias mvndt="mvn dependency:tree"
-
-# Git Aliases
-alias gcam="git commit --all --message"
-alias gst="git status"
-alias gba="git branch -a"
-
-# My Functions
+#################################################
+# My Functions                                  #
+#################################################
 
 # To do list functions
 # Set location of to do file with file variable
