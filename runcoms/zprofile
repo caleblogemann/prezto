@@ -51,6 +51,7 @@ path=(
   /{bin,sbin}
   /Users/caleblogemann/bin
   /usr/local/texlive/2014/bin/x86_64-darwin
+  /Applications/MATLAB_R2014a.app/bin/
   $path
 )
 

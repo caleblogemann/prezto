@@ -18,7 +18,7 @@ export KEYTIMEOUT=1
 
 # Source Aliases
 if [[ -s "${ZDOTDIR:-$HOME}/alias.zsh" ]]; then
-	source "${ZDOTDIR:-$HOME}/alias.zsh"
+    source "${ZDOTDIR:-$HOME}/alias.zsh"
 fi
 
 #################################################
@@ -30,19 +30,19 @@ fi
 file=$HOME/Documents/ToDo.txt
 # add to do
 function atd {
-	# check for to do argument
-	if [[ $1 == "" ]]
-	then
-		echo "atd requires a string argument \n e.g. atd \"Do Homework\""
-		return
-	fi
-	#check if file exists if not create file
-	if ! [ -f $file ]
-	then
-		touch $file
-	fi
-	# write line to file with proper number
-	echo "$1" >> $file
+    # check for to do argument
+    if [[ $1 == "" ]]
+    then
+        echo "atd requires a string argument \n e.g. atd \"Do Homework\""
+        return
+    fi
+    #check if file exists if not create file
+    if ! [ -f $file ]
+    then
+        touch $file
+    fi
+    # write line to file with proper number
+    echo "$1" >> $file
 }
 
 # list to do
@@ -50,16 +50,16 @@ alias ltd="cat -n $file"
 
 # remove to do
 function rmtd {
-	numLines=$(wc -l < $file)
-	if [[ $1 -lt 0 || $1 -gt $numLines || ! $1 =~ '^[0-9]+$' ]] then
-		echo "Invalid argument, rmtd requires a number argument between zero and the length of the ToDo list"
-		return
-	fi
-	sed -i '' ${1}d $file
+    numLines=$(wc -l < $file)
+    if [[ $1 -lt 0 || $1 -gt $numLines || ! $1 =~ '^[0-9]+$' ]] then
+        echo "Invalid argument, rmtd requires a number argument between zero and the length of the ToDo list"
+        return
+    fi
+    sed -i '' ${1}d $file
 }
 
 # modify to do
 function mtd {
-	sed -i '' ${1}d $file
-	echo "$2" >> $file
+    sed -i '' ${1}d $file
+    echo "$2" >> $file
 }
